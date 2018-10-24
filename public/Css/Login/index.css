@@ -8,7 +8,10 @@
 
 
 
-
+img{
+    display:block;
+    margin:auto;"
+}
 
 
 :root {
@@ -125,7 +128,7 @@ body {
 
 }
 .card{
-    padding: 20% 0;
+    padding: 8% 0;
 }
 .titulo-logo{
     text-align: center;

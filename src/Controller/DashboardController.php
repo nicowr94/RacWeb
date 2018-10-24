@@ -16,4 +16,14 @@ class DashboardController extends AbstractController
             'controller_name' => 'DashboardController',
         ]);
     }
+
+    /**
+     * @Route("/prueba", name="prueba")
+     */
+    public function prueba()
+    {
+        return $this->render('dashboard/prueba.html.twig', [
+            'controller_name' => 'DashboardController',
+        ]);
+    }
 }
