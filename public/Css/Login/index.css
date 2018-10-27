@@ -140,3 +140,15 @@ body {
     border: none;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
 }
+
+.selectForm{
+    border-radius: 4rem;
+    height: 51px !important;
+    padding-left: 23px !important;
+}
+
+.flash-notice{
+    padding-bottom: 10px;
+    color: red;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto
+}

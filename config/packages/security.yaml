@@ -6,7 +6,7 @@ security:
         my_provider:
             entity:
                 class: App\Entity\User
-                property: username
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -18,13 +18,17 @@ security:
                 login_path: login
                 check_path: login
                 provider: my_provider
+                default_target_path: dashboard
+                always_use_default_target_path: true
+                failure_path: login
 
             logout:
                 path: /logout
-                target: /
+                target: /login
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/login, roles:  IS_AUTHENTICATED_ANONYMOUSLY}
+         - { path: ^/registrar, roles:  IS_AUTHENTICATED_ANONYMOUSLY}
          - { path: ^/, roles: ROLE_USER }

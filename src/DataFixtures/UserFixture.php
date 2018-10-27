@@ -19,7 +19,9 @@ class UserFixture extends Fixture
     {
         $user = new User();
         $user->setUsername('admin');
-
+        $user->setRoles('ROLE_USER');
+        $user->setSysVal(1);
+        $user->setSysTime(new \DateTime());
         $user->setPassword(
             $this->encoder->encodePassword($user, 'admin')
         );
@@ -31,4 +33,4 @@ class UserFixture extends Fixture
     }
 }
 
-//php bin/console doctrine:fixtures:load --help
+//php bin/console doctrine:fixtures:load

@@ -4,33 +4,66 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * User
+ *
+ * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D649F85E0677", columns={"username"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649E7927C74", columns={"email"})})
+ * @ORM\Entity
  */
 class User implements  UserInterface, \Serializable
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=45, nullable=false)
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=100, nullable=false)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255,unique=true)
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=45, nullable=false)
      */
     private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="roles", type="string", length=15, nullable=false)
+     */
+    private $roles;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="sys_val", type="integer", nullable=false)
+     */
+    private $sysVal;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="sys_time", type="date", nullable=false)
+     */
+    private $sysTime;
 
     public function getId(): ?int
     {
@@ -73,28 +106,72 @@ class User implements  UserInterface, \Serializable
         return $this;
     }
 
-    public function getRoles(){
-      return[
-          'ROLE_USER'
-      ];
-    }
-    public function getSalt(){}
-    public function eraseCredentials(){}
-    public function serialize(){
-       return serialize([
-           $this->id,
-           $this->username,
-           $this->email,
-           $this->password,
-       ]);
+    public function getRoles()
+    {
+
+        return[
+            $this->roles
+        ];
     }
 
+    public function getRolesString()
+    {
+        return $this->roles;
+    }
+
+
+
+    public function setRoles(string $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getSysVal(): ?int
+    {
+        return $this->sysVal;
+    }
+
+    public function setSysVal(int $sysVal): self
+    {
+        $this->sysVal = $sysVal;
+
+        return $this;
+    }
+
+    public function getSysTime(): ?\DateTimeInterface
+    {
+        return $this->sysTime;
+    }
+
+    public function setSysTime(\DateTimeInterface $sysTime): self
+    {
+        $this->sysTime = $sysTime;
+
+        return $this;
+    }
+
+    public function getSalt(){}
+    public function eraseCredentials(){}
+
+    public function serialize(){
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->email,
+            $this->password,
+        ]);
+    }
     public function unserialize($string){
         list(
-        $this->id,
-        $this->username,
-        $this->email,
-        $this->password,
-    ) = unserialize($string, ['allowed_classes'=>false]);
-}
+            $this->id,
+            $this->username,
+            $this->email,
+            $this->password,
+            ) = unserialize($string, ['allowed_classes'=>false]);
+    }
+
+
+
 }

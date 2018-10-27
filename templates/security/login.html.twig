@@ -15,7 +15,7 @@
                 <div class="card card-signin ">
                     <div class="card-body">
                         <img  src="{{ asset('Panel/images/logoText.png') }}" alt="R.A.C" class="dark-logo" />
-                        <h5 class="card-title text-center">Sign In</h5>
+                        <h5 class="card-title text-center">Ingresar</h5>
 
 
                         <a href="{{ path('logout')}}"></a>
@@ -23,17 +23,17 @@
                             <span class="error">{{ error.messagekey }}</span>
                         {% endif%}
 
-                        <form class="form-signin" action="{{ path('login') }}" method="post">
+                        <form class="form-signin" action="{{ path('login') }}" method="post" autocomplete="off">
 
                             <hr class="my-4">
                             <div class="form-label-group">
                                 <input type="text" name="_username" value="{{ last_username }}" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-                                <label for="inputEmail">Email address</label>
+                                <label for="inputEmail">Correo</label>
                             </div>
 
                             <div class="form-label-group">
                                 <input type="password" name="_password" id="inputPassword" class="form-control" placeholder="Password" required>
-                                <label for="inputPassword">Password</label>
+                                <label for="inputPassword">Contraseña</label>
                             </div>
 
                             <input type="hidden" name="_csrf_token"
@@ -42,9 +42,9 @@
 
                             <div class="custom-control custom-checkbox mb-3">
                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                <label class="custom-control-label" for="customCheck1">Recordar contraseña</label>
                             </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Ingresar</button>
 
                         </form>
                     </div>

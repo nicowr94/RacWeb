@@ -11,7 +11,7 @@ $(function() {
     // sales ratio
     // ============================================================== 
     var chart = new Chartist.Line('.sales', {
-        labels: [1, 2, 3, 4, 5, 6, 7],
+        labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
         series: [
             [24.5, 28.3, 42.7, 32, 34.9, 48.6, 40],
             [8.9, 5.8, 21.9, 5.8, 16.5, 6.5, 14.5]
@@ -26,10 +26,10 @@ $(function() {
         ],
         axisY: {
             onlyInteger: true,
-            scaleMinSpace: 40,
+            scaleMinSpace: 20,
             offset: 20,
             labelInterpolationFnc: function(value) {
-                return (value / 10) + 'k';
+                return (value *2) + '%';
             }
         },
 
